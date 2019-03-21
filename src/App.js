@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Title from './components/Title';
+import Category from './components/Category';
+/* FONT AWESOME: */
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faIgloo, faChevronLeft, faChevronRight, faThumbsUp, faThumbsDown, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faIgloo, faChevronLeft, faChevronRight, faThumbsUp, faThumbsDown, faTrashAlt);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <Title />
+        <div className="container">
+          <Category name="Went Well" placeholder="What went well?"/>
+          <Category name="To Improve" placeholder="What can be improved?"/>
+          <Category name="Action Items" placeholder="What needs to be done?"/>
+        </div>
+      </>
     );
   }
 }
