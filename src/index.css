@@ -72,6 +72,9 @@ div, header, footer {
   position: relative;
   width: 100%;
 }
+* {
+  box-sizing: border-box;
+}
 
 *:focus {
   outline: none;
@@ -94,19 +97,19 @@ header input {
   font-size: 1.5em;
 }
 
-/* .categories {
+/* .container {
   display: flex;
   justify-content: space-between;
   margin: 50px;
 } */
-
-.container {
+/* .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 1em;
-}
+} */
 
 .category {
+  width: 33.33%;
   margin: 2em 0 0 0;
   display: grid;
   grid-template-rows: 1fr;
@@ -121,8 +124,8 @@ header input {
 
 .item {
   background: var(--wentWell);
-  width: 80%;
-  min-height: 80px;
+  width: 75%;
+  min-height: 100px;
   height: auto;
   margin: 0 auto;
   border: 1px solid transparent;
@@ -135,6 +138,10 @@ header input {
   /* word-wrap: break-word;   */
   display: grid;
   grid-template-rows: auto 25px;
+}
+.item-text{
+  background: #eee;
+  margin: 3px 0 0 0;
 }
 .item-content p {
   padding: 0.5em;

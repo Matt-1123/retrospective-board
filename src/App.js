@@ -9,14 +9,20 @@ import { faIgloo, faChevronLeft, faChevronRight, faThumbsUp, faThumbsDown, faTra
 library.add(faIgloo, faChevronLeft, faChevronRight, faThumbsUp, faThumbsDown, faTrashAlt);
 
 class App extends Component {
+  state = {
+    wentWell: [],
+    toImprove: [],
+    actionItems: []
+  }
+  
   render() {
     return (
       <>
         <Title />
         <div className="container">
-          <Category name="Went Well" placeholder="What went well?"/>
-          <Category name="To Improve" placeholder="What can be improved?"/>
-          <Category name="Action Items" placeholder="What needs to be done?"/>
+          <Category name="Went Well" items={this.state.wentWell} />
+          <Category name="To Improve" items={this.state.toImprove} />
+          <Category name="Action Items" items={this.state.actionItems} />
         </div>
       </>
     );

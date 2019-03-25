@@ -3,17 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Item extends Component {
   state = {
-    likes: 0,
-    dislikes: 0
+    likes: this.props.likes,
+    dislikes: this.props.dislikes
   }
 
   handleUpvote = () => {
-    console.log('upvote');
-    return this.setState({ likes: this.state.likes += 1 })
+    console.log('liked');
+    return this.setState({ likes: this.state.likes + 1 });
   }
+
   handleDownvote = () => {
-    console.log('downvote');
-    return this.setState({ dislikes: this.state.dislikes += 1 })
+    console.log("disliked")
+    return this.setState({ dislikes: this.state.dislikes + 1 });
   }
   
   render() {
@@ -23,7 +24,9 @@ class Item extends Component {
           <FontAwesomeIcon icon="chevron-left" />
         </div>
         <div className="item-content">
-          <p>{this.props.text}</p>
+          <div className="item-text">
+            <p>{this.props.text}</p>
+          </div>
           <div className="item-actions">
             <div className="item-action-icon">
               <button onClick={this.handleUpvote}>
@@ -38,7 +41,7 @@ class Item extends Component {
               <span> {this.state.dislikes}</span>
             </div>
             <div className="item-action-icon">
-              <button onClick={this.handleDelete}>
+              <button onClick={this.props.handleDelete}>
                 <FontAwesomeIcon icon="trash-alt" />
               </button>
             </div>
