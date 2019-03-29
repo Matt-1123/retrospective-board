@@ -9,20 +9,28 @@ import { faIgloo, faChevronLeft, faChevronRight, faThumbsUp, faThumbsDown, faTra
 library.add(faIgloo, faChevronLeft, faChevronRight, faThumbsUp, faThumbsDown, faTrashAlt);
 
 class App extends Component {
-  state = {
-    wentWell: [],
-    toImprove: [],
-    actionItems: []
-  }
+  // state = {
+  //   wentWell: [],
+  //   toImprove: [],
+  //   actionItems: [],
+  //   inputValue: '',
+  // }
+
+  // Update the inputValue state on the fly as the user types 
+  // updateInputValue = e => {
+  //   this.setState({
+  //     inputValue: e.target.value
+  //   });
+  // }
   
   render() {
     return (
       <>
         <Title />
         <div className="container">
-          <Category name="Went Well" items={this.state.wentWell} />
-          <Category name="To Improve" items={this.state.toImprove} />
-          <Category name="Action Items" items={this.state.actionItems} />
+          <Category name="Went Well" colorId="wellColor"/>
+          <Category name="To Improve" colorId="improveColor"/>
+          <Category name="Action Items" colorId="actionColor"/>
         </div>
       </>
     );
