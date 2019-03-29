@@ -53,7 +53,7 @@ table {
 :root {
   --header: #70798C; 
   --wentWell: #3BB539;
-  --improve: #FF3E41;
+  --improve: #EE8434;
   --actionItem: #437F97;
   --footer: #242038;
 }
@@ -63,7 +63,8 @@ table {
 ---- MAIN STYLING --------
 ------------------------*/
 body {
-  background: #eee;
+  background-image: url("./img/kraft-paper.jpg");
+  background-color: #fff;
 }
 
 div, header, footer {
@@ -123,13 +124,11 @@ header input {
 }
 
 .item {
-  background: var(--wentWell);
+  /* background: var(--wentWell); */
   width: 75%;
-  min-height: 100px;
+  min-height: 110px;
   height: auto;
   margin: 0 auto;
-  border: 1px solid transparent;
-  border-radius: 3px;
   display: grid;
   grid-template-columns: 1fr 8fr 1fr;
 }
@@ -140,8 +139,8 @@ header input {
   grid-template-rows: auto 25px;
 }
 .item-text{
-  background: #eee;
-  margin: 3px 0 0 0;
+  background: #fff;
+  border-top: 2px solid #eee;
 }
 .item-content p {
   padding: 0.5em;
@@ -150,18 +149,28 @@ header input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;  
+  background: #eee;
 }
 
 .item-action-icon {
   text-align: center;
 }
 
-.item .move-item {
-  background: #53c851;
+.move-item {
+  /* background: #53c851; */
   display: grid;
   justify-items: center;
   align-items: center;
 }
-.item .move-item:hover {
-  background: #339b31;
+.move-item:first-child {
+  border-radius: 10px 0 0 10px;
 }
+.move-item:last-child {
+  border-radius: 0 10px 10px 0;
+}
+.move-item:hover {
+  opacity: 0.8;
+}
+.wellColor{ background: var(--wentWell) }
+.improveColor{ background: var(--improve) }
+.actionColor{ background: var(--actionItem) }
