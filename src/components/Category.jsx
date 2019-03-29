@@ -43,10 +43,11 @@ class Category extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <input 
+            placeholder="Enter note here"
             value={this.state.inputValue} 
             onChange={e => this.updateInputValue(e)}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className={this.props.colorId}>Submit</button>
         </form> 
 
         {/* Map out all items in state */}

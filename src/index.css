@@ -63,8 +63,9 @@ table {
 ---- MAIN STYLING --------
 ------------------------*/
 body {
-  background-image: url("./img/kraft-paper.jpg");
-  background-color: #fff;
+  /* background-image: url("./img/kraft-paper.jpg"); */
+  /* background-color: #fff; */
+  background-color: #424242;
 }
 
 div, header, footer {
@@ -116,17 +117,60 @@ header input {
   grid-template-rows: 1fr;
   grid-row-gap: 1em;
   /* grid-auto-rows: minmax(80px, auto); */
-  justify-items: center;
+  /* justify-items: center; */
 }
 
 .category h2 {
   font-size: 1.5em;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
 }
+
+.category h3 {
+  margin: 20px 10%;
+  color: #eee;
+}
+
+
+/* ------------------ */
+/* ------ FORM ------ */
+/* ------------------ */
+form {
+  margin: 20px 0;
+}
+
+form input {
+  margin: 0 5px 0 10%;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  border-bottom: 2px solid #fff;
+  width: 55%;
+  padding: 5px;
+  font-size: 1.1em;
+  color: #fff;
+}
+
+form button {
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 13px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ------------------ */
+/* ------ ITEMS ------ */
+/* ------------------ */
 
 .item {
   /* background: var(--wentWell); */
-  width: 75%;
-  min-height: 110px;
+  width: 80%;
+  min-height: 120px;
   height: auto;
   margin: 0 auto;
   display: grid;
@@ -140,7 +184,7 @@ header input {
 }
 .item-text{
   background: #fff;
-  border-top: 2px solid #eee;
+  border-top: 2px solid #ddd;
 }
 .item-content p {
   padding: 0.5em;
@@ -149,7 +193,7 @@ header input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;  
-  background: #eee;
+  background: #ddd;
 }
 
 .item-action-icon {
