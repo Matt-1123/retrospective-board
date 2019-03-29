@@ -7,7 +7,7 @@ class Category extends Component {
     items: []
   }
   
-  // Add new item to 'items' state and reset inputValue state
+  // Add new item to items and reset inputValue state
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ 
