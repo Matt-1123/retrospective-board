@@ -28,7 +28,7 @@ class Item extends Component {
         <div className="item-content">
           {/* User Input */}
           <div className="item-text">
-            <p>{this.props.item.value}</p>
+            <p>{this.props.item}</p>
           </div>
 
           <div className="item-actions">

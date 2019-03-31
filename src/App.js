@@ -24,12 +24,36 @@ class App extends Component {
   updateActionValue = e => this.setState({ actionValue: e.target.value });
 
 
-  handleSubmit = (e, category) => {
+  // handleSubmit = (e, category) => {
+  //   e.preventDefault();
+  //   this.setState({ 
+  //     [category]: [...this.state[category], this.state.inputValue],
+  //     inputValue: ""
+  //    });
+  // }
+  wellSubmit = e => {
+    console.log("submitted");
     e.preventDefault();
-    this.setState({ 
-      [category]: [...this.state[category], this.state.inputValue],
-      inputValue: ""
-     });
+    this.setState({
+      wentWell: [...this.state.wentWell, this.state.wellValue],
+      wellValue: ''
+    })
+  }
+  improveSubmit = e => {
+    console.log("submitted");
+    e.preventDefault();
+    this.setState({
+      toImprove: [...this.state.toImprove, this.state.improveValue],
+      improveValue: ''
+    })
+  }
+  actionSubmit = e => {
+    console.log("submitted");
+    e.preventDefault();
+    this.setState({
+      actionItems: [...this.state.actionItems, this.state.actionValue],
+      actionValue: ''
+    })
   }
   
   render() {
@@ -44,7 +68,7 @@ class App extends Component {
             colorId="wellColor" 
             inputValue={this.state.wellValue}
             updateInput={this.updateWellValue}
-            submit={this.handleSubmit}
+            submit={this.wellSubmit}
           />
           <Category 
             name="To Improve" 
@@ -53,7 +77,7 @@ class App extends Component {
             colorId="improveColor"
             inputValue={this.state.improveValue}
             updateInput={this.updateImproveValue}
-            submit={this.handleSubmit}
+            submit={this.improveSubmit}
           />
           <Category 
             name="Action Items" 
@@ -62,7 +86,7 @@ class App extends Component {
             colorId="actionColor"
             inputValue={this.state.actionValue}
             updateInput={this.updateActionValue}
-            submit={this.handleSubmit}
+            submit={this.actionSubmit}
           />
         </div>
       </>

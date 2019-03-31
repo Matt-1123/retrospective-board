@@ -6,7 +6,7 @@ class Category extends Component {
     // userInput: this.props.inputValue,
     // items: []
     // inputValue: "",
-    items: this.props.items.map(item => ({ item, likes: 0, dislikes: 0 }))
+    // items: this.props.items.map(item => ({ item, likes: 0, dislikes: 0 }))
   }
   
   // Add new item to items and reset inputValue state
@@ -46,7 +46,7 @@ class Category extends Component {
       <div className="category">
         <h2>{this.props.name}</h2>
 
-        <form onSubmit={e => this.props.submit(this.props.stateName)}>
+        <form onSubmit={e => this.props.submit(e)}>
           <input 
             placeholder="Enter note here"
             value={this.props.inputValue} 
@@ -55,9 +55,9 @@ class Category extends Component {
           <button type="submit" className={this.props.colorId}>Submit</button>
         </form> 
 
-        {/* Map out all items in state */}
-        {this.state.items.length > 0 ? 
-          this.state.items.map((item, index) => {
+        {/* Map out all items */}
+        {this.props.items.length > 0 ? 
+          this.props.items.map((item, index) => {
             return (<Item 
               key={`item-${index}`} 
               // key={Math.random()} NO... CHANGES EVERY RENDER
