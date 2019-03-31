@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Item extends Component {
   state = {
-    likes: 0,
-    dislikes: 0
+    likes: this.props.item.likes,
+    dislikes: this.props.item.dislikes
   }
 
   handleUpvote = () => {
@@ -28,7 +28,7 @@ class Item extends Component {
         <div className="item-content">
           {/* User Input */}
           <div className="item-text">
-            <p>{this.props.text}</p>
+            <p>{this.props.item.value}</p>
           </div>
 
           <div className="item-actions">

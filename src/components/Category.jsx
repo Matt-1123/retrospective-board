@@ -3,21 +3,25 @@ import Item from './Item';
 
 class Category extends Component {
   state = {
-    inputValue: '',
-    items: []
+    // userInput: this.props.inputValue,
+    // items: []
+    // inputValue: "",
+    items: this.props.items.map(item => ({ item, likes: 0, dislikes: 0 }))
   }
   
   // Add new item to items and reset inputValue state
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ 
-      items: [...this.state.items, this.state.inputValue],
-      inputValue: ""
-     });
-  }
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   this.setState({ 
+  //     items: [...this.state.items, {value: this.state.inputValue, likes: 0, dislikes: 0}],
+  //     inputValue: "",
+  //     likes: 0,
+  //     dislikes: 0
+  //    });
+  // }
 
   // Update the inputValue state on the fly as the user types 
-  updateInputValue = e => this.setState({ inputValue: e.target.value });
+  //updateInputValue = e => this.setState({ inputValue: e.target.value });
 
   // handleUpvote = () => {
   //   console.log('liked');
@@ -29,8 +33,9 @@ class Category extends Component {
   // }
 
   // Remove clicked item (filtered out by index)
-  handleDelete = deleteIndex => {
+  handleDelete = deleteIndex => {  
     const items = this.state.items.filter((item, index) => {
+      console.log(`item: ${item} ${deleteIndex} : ${index}`);
       return deleteIndex !== index;
     });
     this.setState({ items });
@@ -41,11 +46,11 @@ class Category extends Component {
       <div className="category">
         <h2>{this.props.name}</h2>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={e => this.props.submit(this.props.stateName)}>
           <input 
             placeholder="Enter note here"
-            value={this.state.inputValue} 
-            onChange={e => this.updateInputValue(e)}
+            value={this.props.inputValue} 
+            onChange={e => this.props.updateInput(e)}
           />
           <button type="submit" className={this.props.colorId}>Submit</button>
         </form> 
@@ -58,7 +63,7 @@ class Category extends Component {
               // key={Math.random()} NO... CHANGES EVERY RENDER
               index={index}
               delete={this.handleDelete}
-              text={item}
+              item={item}
               colorId={this.props.colorId}
             />);
           }) : <h3>Nothing here</h3>

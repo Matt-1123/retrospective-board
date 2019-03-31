@@ -190,7 +190,7 @@ form button {
 .item-content {
   /* word-wrap: break-word;   */
   display: grid;
-  grid-template-rows: auto 25px;
+  grid-template-rows: auto 28px;
 }
 .item-text{
   background: #fff;
@@ -204,6 +204,7 @@ form button {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;  
   background: #ddd;
+  padding: 2px 0;
 }
 
 .item-action-icon {
