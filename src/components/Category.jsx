@@ -55,6 +55,7 @@ class Category extends Component {
               colorId={this.props.colorId}
               moveLeft={this.props.moveLeft}
               moveRight={this.props.moveRight}
+              textUpdate={this.props.textUpdate}
             />);
           }) : <h3>(Nothing here)</h3>
         }

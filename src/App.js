@@ -131,6 +131,25 @@ class App extends Component {
   //    });
   // 
 
+  
+  // -------- UPDATE ITEM'S VALUE IN TEXTAREA --------
+  wellTextUpdate = (e, itemIndex) => {
+    const wentWell = [...this.state.wentWell];
+    wentWell[itemIndex].value = e.target.value;
+    return this.setState({ wentWell });
+  }
+  improveTextUpdate = (e, itemIndex) => {
+    const toImprove = [...this.state.toImprove];
+    toImprove[itemIndex].value = e.target.value;
+    return this.setState({ toImprove });
+  }
+  actionTextUpdate = (e, itemIndex) => {
+    const actionItems = [...this.state.actionItems];
+    actionItems[itemIndex].value = e.target.value;
+    return this.setState({ actionItems });
+  }
+
+
   // -------- COUNTING VOTES --------
   wellUpvote = voteIndex => {
     const wentWell = [...this.state.wentWell];
@@ -211,6 +230,7 @@ class App extends Component {
             delete={this.wellDelete}
             moveLeft={this.wellMoveLeft}
             moveRight={this.wellMoveRight}
+            textUpdate={this.wellTextUpdate}
           />
           <Category 
             name="To Improve" 
@@ -225,6 +245,7 @@ class App extends Component {
             delete={this.improveDelete}
             moveLeft={this.improveMoveLeft}
             moveRight={this.improveMoveRight}
+            textUpdate={this.improveTextUpdate}
           />
           <Category 
             name="Action Items" 
@@ -239,6 +260,7 @@ class App extends Component {
             delete={this.actionDelete}
             moveLeft={this.actionMoveLeft}
             moveRight={this.actionMoveRight}
+            textUpdate={this.actionTextUpdate}
           />
         </div>
       </>

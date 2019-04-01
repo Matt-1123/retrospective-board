@@ -18,7 +18,12 @@ class Item extends Component {
         <div className="item-content">
           {/* User Input */}
           <div className="item-text">
-            <p>{this.props.item.value}</p>
+            {/* <p>{this.props.item.value}</p> */}
+            <textarea
+              onChange={e => this.props.textUpdate(e, this.props.index)}
+            >
+              {this.props.item.value}
+            </textarea>
           </div>
 
           <div className="item-actions">
