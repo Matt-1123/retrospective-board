@@ -53,6 +53,8 @@ class Category extends Component {
               downvote={this.props.downvote}
               item={item}
               colorId={this.props.colorId}
+              moveLeft={this.props.moveLeft}
+              moveRight={this.props.moveRight}
             />);
           }) : <h3>(Nothing here)</h3>
         }

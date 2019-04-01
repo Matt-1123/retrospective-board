@@ -7,7 +7,10 @@ class Item extends Component {
     return (
       <div className="item">
         {/* LEFT ARROW */}
-        <div className={`move-item ${ this.props.colorId }`}>
+        <div 
+          className={`move-item ${ this.props.colorId }`}
+          onClick={() => this.props.moveLeft(this.props.index)}
+        >
           <FontAwesomeIcon icon="chevron-left" />
         </div>
 
@@ -40,7 +43,10 @@ class Item extends Component {
         </div>
 
         {/* RIGHT ARROW */}
-        <div className={`move-item ${ this.props.colorId }`}>
+        <div 
+          className={`move-item ${ this.props.colorId }`}
+          onClick={() => this.props.moveRight(this.props.index)}
+        >
           <FontAwesomeIcon icon="chevron-right" />
         </div>
       </div>

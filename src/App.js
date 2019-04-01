@@ -20,6 +20,68 @@ class App extends Component {
     
   }
 
+  // -------- MOVING ITEMS BETWEEN CATEGORIES --------
+  wellMoveLeft = (moveIndex) => {
+    const item = this.state.wentWell[moveIndex];
+    const wentWell = this.state.wentWell.filter((item, index) => {
+      return moveIndex !== index;
+    });
+    return this.setState({
+      wentWell,
+      actionItems: [...this.state.actionItems, item]
+    });
+  }
+  wellMoveRight = (moveIndex) => {
+    const item = this.state.wentWell[moveIndex];
+    const wentWell = this.state.wentWell.filter((item, index) => {
+      return moveIndex !== index;
+    });
+    return this.setState({
+      wentWell,
+      toImprove: [...this.state.toImprove, item]
+    });
+  }
+  improveMoveLeft = (moveIndex) => {
+    const item = this.state.toImprove[moveIndex];
+    const toImprove = this.state.toImprove.filter((item, index) => {
+      return moveIndex !== index;
+    });
+    return this.setState({
+      toImprove,
+      wentWell: [...this.state.wentWell, item]
+    });
+  }
+  improveMoveRight = (moveIndex) => {
+    const item = this.state.toImprove[moveIndex];
+    const toImprove = this.state.toImprove.filter((item, index) => {
+      return moveIndex !== index;
+    });
+    return this.setState({
+      toImprove,
+      actionItems: [...this.state.actionItems, item]
+    });
+  }
+  actionMoveLeft = (moveIndex) => {
+    const item = this.state.actionItems[moveIndex];
+    const actionItems = this.state.actionItems.filter((item, index) => {
+      return moveIndex !== index;
+    });
+    return this.setState({
+      actionItems,
+      toImprove: [...this.state.toImprove, item]
+    });
+  }
+  actionMoveRight = (moveIndex) => {
+    const item = this.state.actionItems[moveIndex];
+    const actionItems = this.state.actionItems.filter((item, index) => {
+      return moveIndex !== index;
+    });
+    return this.setState({
+      actionItems,
+      wentWell: [...this.state.wentWell, item]
+    });
+  }
+  
   // -------- UPDATING USER INPUT VALUE -------- 
   // Update the inputValue state on the fly as the user types 
   updateWellValue = e => this.setState({ wellValue: e.target.value });
@@ -30,6 +92,9 @@ class App extends Component {
   // -------- SUBMITTING A NEW ITEM --------
   wellSubmit = e => {
     e.preventDefault();
+    if(!this.state.wellValue){
+      return alert("Empty note discarded");
+    }
     this.setState({
       wentWell: [...this.state.wentWell, {value: this.state.wellValue, likes: 0, dislikes: 0}],
       wellValue: ''
@@ -37,6 +102,9 @@ class App extends Component {
   }
   improveSubmit = e => {
     e.preventDefault();
+    if(!this.state.improveValue){
+      return alert("Empty note discarded");
+    }
     this.setState({
       toImprove: [...this.state.toImprove, {value: this.state.improveValue, likes: 0, dislikes: 0}],
       improveValue: ''
@@ -44,6 +112,9 @@ class App extends Component {
   }
   actionSubmit = e => {
     e.preventDefault();
+    if(!this.state.actionValue){
+      return alert("Empty note discarded");
+    }
     this.setState({
       actionItems: [...this.state.actionItems, {value: this.state.actionValue, likes: 0, dislikes: 0}],
       actionValue: ''
@@ -138,6 +209,8 @@ class App extends Component {
             upvote={this.wellUpvote}
             downvote={this.wellDownvote}
             delete={this.wellDelete}
+            moveLeft={this.wellMoveLeft}
+            moveRight={this.wellMoveRight}
           />
           <Category 
             name="To Improve" 
@@ -150,6 +223,8 @@ class App extends Component {
             upvote={this.improveUpvote}
             downvote={this.improveDownvote}
             delete={this.improveDelete}
+            moveLeft={this.improveMoveLeft}
+            moveRight={this.improveMoveRight}
           />
           <Category 
             name="Action Items" 
@@ -162,6 +237,8 @@ class App extends Component {
             upvote={this.actionUpvote}
             downvote={this.actionDownvote}
             delete={this.actionDelete}
+            moveLeft={this.actionMoveLeft}
+            moveRight={this.actionMoveRight}
           />
         </div>
       </>
