@@ -140,6 +140,8 @@ header input {
 .category h3 {
   margin: 20px 10%;
   color: #eee;
+  font-style: italic;
+  font-size: 0.95em;
 }
 
 

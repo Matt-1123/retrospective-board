@@ -13,48 +13,114 @@ class App extends Component {
     wentWell: [],
     toImprove: [],
     actionItems: [],
+
     wellValue: '',
     improveValue: '',
     actionValue: ''
+    
   }
 
+  // -------- UPDATING USER INPUT VALUE -------- 
   // Update the inputValue state on the fly as the user types 
   updateWellValue = e => this.setState({ wellValue: e.target.value });
   updateImproveValue = e => this.setState({ improveValue: e.target.value });
   updateActionValue = e => this.setState({ actionValue: e.target.value });
 
 
+  // -------- SUBMITTING A NEW ITEM --------
+  wellSubmit = e => {
+    e.preventDefault();
+    this.setState({
+      wentWell: [...this.state.wentWell, {value: this.state.wellValue, likes: 0, dislikes: 0}],
+      wellValue: ''
+    })
+  }
+  improveSubmit = e => {
+    e.preventDefault();
+    this.setState({
+      toImprove: [...this.state.toImprove, {value: this.state.improveValue, likes: 0, dislikes: 0}],
+      improveValue: ''
+    })
+  }
+  actionSubmit = e => {
+    e.preventDefault();
+    this.setState({
+      actionItems: [...this.state.actionItems, {value: this.state.actionValue, likes: 0, dislikes: 0}],
+      actionValue: ''
+    })
+  }
+  // TODO: Consolidate submit methods.  Add '<form onSubmit={
+  // e => this.props.submit(e, this.props.stateName)}></form>
+  // to Category's render and pass this method as props:
   // handleSubmit = (e, category) => {
   //   e.preventDefault();
   //   this.setState({ 
   //     [category]: [...this.state[category], this.state.inputValue],
   //     inputValue: ""
   //    });
+  // 
+
+  // -------- COUNTING VOTES --------
+  wellUpvote = voteIndex => {
+    const wentWell = [...this.state.wentWell];
+    wentWell[voteIndex].likes += 1;
+    return this.setState({ wentWell });
+  }  
+  wellDownvote = voteIndex => {
+    const wentWell = [...this.state.wentWell];
+    wentWell[voteIndex].dislikes += 1;
+    return this.setState({ wentWell });
+  }
+  improveUpvote = voteIndex => {
+    const toImprove = [...this.state.toImprove];
+    toImprove[voteIndex].likes += 1;
+    return this.setState({ toImprove });
+  }  
+  improveDownvote = voteIndex => {
+    const toImprove = [...this.state.toImprove];
+    toImprove[voteIndex].dislikes += 1;
+    return this.setState({ toImprove });
+  }
+  actionUpvote = voteIndex => {
+    const actionItems = [...this.state.actionItems];
+    actionItems[voteIndex].likes += 1;
+    return this.setState({ actionItems });
+  }  
+  actionDownvote = voteIndex => {
+    const actionItems = [...this.state.actionItems];
+    actionItems[voteIndex].dislikes += 1;
+    return this.setState({ actionItems });
+  }
+
+  // -------- DELETING ITEMS --------
+  wellDelete = deleteIndex => {
+    const wentWell = this.state.wentWell.filter((item, index) => {
+      return deleteIndex !== index;
+    });
+    return this.setState({ wentWell })
+  }
+  improveDelete = deleteIndex => {
+    const toImprove = this.state.toImprove.filter((item, index) => {
+      return deleteIndex !== index;
+    });
+    return this.setState({ toImprove })
+  }
+  actionDelete = deleteIndex => {
+    const actionItems = this.state.actionItems.filter((item, index) => {
+      return deleteIndex !== index;
+    });
+    return this.setState({ actionItems })
+  }
+
+  // Remove clicked item (filtered out by index)
+  // handleDelete = deleteIndex => {  
+  //   const items = this.state.items.filter((item, index) => {
+  //     console.log(`item: ${item} ${deleteIndex} : ${index}`);
+  //     return deleteIndex !== index;
+  //   });
+  //   this.setState({ items });
   // }
-  wellSubmit = e => {
-    console.log("submitted");
-    e.preventDefault();
-    this.setState({
-      wentWell: [...this.state.wentWell, this.state.wellValue],
-      wellValue: ''
-    })
-  }
-  improveSubmit = e => {
-    console.log("submitted");
-    e.preventDefault();
-    this.setState({
-      toImprove: [...this.state.toImprove, this.state.improveValue],
-      improveValue: ''
-    })
-  }
-  actionSubmit = e => {
-    console.log("submitted");
-    e.preventDefault();
-    this.setState({
-      actionItems: [...this.state.actionItems, this.state.actionValue],
-      actionValue: ''
-    })
-  }
+  
   
   render() {
     return (
@@ -69,6 +135,9 @@ class App extends Component {
             inputValue={this.state.wellValue}
             updateInput={this.updateWellValue}
             submit={this.wellSubmit}
+            upvote={this.wellUpvote}
+            downvote={this.wellDownvote}
+            delete={this.wellDelete}
           />
           <Category 
             name="To Improve" 
@@ -78,6 +147,9 @@ class App extends Component {
             inputValue={this.state.improveValue}
             updateInput={this.updateImproveValue}
             submit={this.improveSubmit}
+            upvote={this.improveUpvote}
+            downvote={this.improveDownvote}
+            delete={this.improveDelete}
           />
           <Category 
             name="Action Items" 
@@ -87,6 +159,9 @@ class App extends Component {
             inputValue={this.state.actionValue}
             updateInput={this.updateActionValue}
             submit={this.actionSubmit}
+            upvote={this.actionUpvote}
+            downvote={this.actionDownvote}
+            delete={this.actionDelete}
           />
         </div>
       </>

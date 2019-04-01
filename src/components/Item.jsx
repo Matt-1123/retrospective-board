@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
-import Like from './Like';
-import Dislike from './Dislike';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Item extends Component {
-  state = {
-    likes: this.props.item.likes,
-    dislikes: this.props.item.dislikes
-  }
-
-  handleUpvote = () => {
-    return this.setState({ likes: this.state.likes + 1 });
-  }
-  handleDownvote = () => {
-    return this.setState({ dislikes: this.state.dislikes + 1 });
-  }
 
   render() {
     return (
@@ -28,23 +15,21 @@ class Item extends Component {
         <div className="item-content">
           {/* User Input */}
           <div className="item-text">
-            <p>{this.props.item}</p>
+            <p>{this.props.item.value}</p>
           </div>
 
           <div className="item-actions">
             <div className="item-action-icon">
-              {/* <Like /> */}
-              <button onClick={this.handleUpvote}>
+              <button onClick={() => this.props.upvote(this.props.index)}>
                 <FontAwesomeIcon icon="thumbs-up" />
               </button>
-              <span> {this.state.likes}</span>
+              <span> {this.props.item.likes}</span>
             </div>
             <div className="item-action-icon">
-              {/* <Dislike /> */}
-              <button onClick={this.handleDownvote}>
+              <button onClick={() => this.props.downvote(this.props.index)}>
                 <FontAwesomeIcon icon="thumbs-down" />
               </button>
-              <span> {this.state.dislikes}</span>
+              <span> {this.props.item.dislikes}</span>
             </div>
             <div className="item-action-icon">
               <button onClick={() => this.props.delete(this.props.index)}>
